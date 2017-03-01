@@ -12,7 +12,7 @@ function setup() {
 }
 
 function draw() {
- background(200);
+ background(64,164,223);
  for (var i = 0; i < cells.length; i++) {
    cells[i].move();
    cells[i].show();
@@ -23,17 +23,20 @@ function draw() {
 
 function divide()
 {
-	if (counter < 10)
+	
 	{
 		for (var i = cells.length-1; i >= 0; i--) 
 		{
-			//if (cells[i].clicked(mouseX, mouseY)) {
+			if (counter < 5)
+			{
 			  cells.push(cells[i].mitosis());
 			  cells.push(cells[i].mitosis());
 			  cells.splice(i, 1);
-			//}
+			}
+			
 		}
 		counter += 1;
+		
 	}
 }
 

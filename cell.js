@@ -7,7 +7,7 @@ function Cell(pos, r, c) {
   }
 
   this.r = r || 60;
-  this.c = c || color(random(100, 255), 0, random(100, 255), 100);
+  this.c = c || color(random(0, 255), 0, random(0, 255), 100);
 
   this.clicked = function(x, y) {
     var d = dist(this.pos.x, this.pos.y, x, y);
