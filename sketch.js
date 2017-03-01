@@ -3,7 +3,7 @@ var counter = 0;
 
 function setup() {
   createCanvas(700, 700);
-  frameRate(60);
+  frameRate(30);
   
   cells.push(new Cell());
   cells.push(new Cell());
@@ -21,7 +21,7 @@ function setup() {
 }
 
 function draw() {
- background(64,164,223);
+ background(0,0,0);
  for (var i = 0; i < cells.length; i++) {
    cells[i].move();
    cells[i].show();

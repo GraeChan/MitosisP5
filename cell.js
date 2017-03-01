@@ -7,7 +7,7 @@ function Cell(pos, r, c) {
   }
 
   this.r = r || 60;
-  this.c = c || color(random(0, 255), 0, random(0, 255), 100);
+  this.c = c || color(random(50, 255), random(50, 255), random(50, 255), 100);
 
   this.clicked = function(x, y) {
     var d = dist(this.pos.x, this.pos.y, x, y);
@@ -20,7 +20,7 @@ function Cell(pos, r, c) {
 
   this.mitosis = function() {
     //this.pos.x += random(-this.r, this.r);
-    var cell = new Cell(this.pos, this.r*0.8, this.c);
+    var cell = new Cell(this.pos, this.r*0.75, this.c);
     return cell;
   }
 
