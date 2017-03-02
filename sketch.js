@@ -1,16 +1,17 @@
 var cells = [];
 var timeCount = 0;
 var cellCount = 0;
-var divideTimer = 0;
-var timer = 0;
+//var timer = 0;
 var divideInterval;
 var timeInterval;
+//var deathInterval;
 
 function setup() {
   createCanvas(640, 480);
   //timer = createP('timer');
   divideInterval = setInterval(divide, 2000);
   timeInterval = setInterval(timeIt, 1000);
+  //deathInterval = setInterval(die, 5000);
   frameRate(30);
   
   cells.push(new Cell());
@@ -26,6 +27,8 @@ function setup() {
   cells.push(new Cell());
   cells.push(new Cell());
   cells.push(new Cell());
+  
+  cellCount = 12;
 }
 
 function timeIt()
@@ -53,12 +56,16 @@ function divide()
 	{
 		for (var i = cells.length-1; i >= 0; i--) 
 		{
-			if (cellCount < 2400)
+			if (cellCount < 3072)
 			{
 			  cells.push(cells[i].mitosis());
 			  cells.push(cells[i].mitosis());
 			  cells.splice(i, 1);
 			  cellCount += 1;
+			}
+			if (cellCount >= 3072)
+			{
+			  clearInterval(divideInterval);
 			}
 		}
 			
@@ -69,13 +76,14 @@ function die()
 {
 	for (var i = cells.length-1; i >= 0; i--) 
 	{
-		if (timeCount > 20)
-		{
+		//if (timeCount2 > 5)
+		//{
 		  cells.pop(cells[i].mitosis());
 		  //cells.pop(cells[i].mitosis());
 		  cells.splice(i, 1);
-		  timeCount-=1;
-		}
+		  cellCount-=1;
+		  //timeCount2=0;
+		//}
 	}
 	
 }
