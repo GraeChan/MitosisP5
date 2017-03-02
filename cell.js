@@ -1,4 +1,4 @@
-function Cell(pos, r, c, ic) {
+function Cell(pos, r, c, ic, oic) {
 
   if (pos) {
     this.pos = pos.copy();
@@ -9,19 +9,11 @@ function Cell(pos, r, c, ic) {
   this.r = r || 100;
   this.c = c || color(random(50, 255), random(50, 255), random(50, 255), 100);
   this.ic = ic || color(random(50, 255), random(50, 255), random(50, 255), 100);
-
-  this.clicked = function(x, y) {
-    var d = dist(this.pos.x, this.pos.y, x, y);
-    if (d < this.r) {
-      return true;
-    } else {
-      return false;
-    }
-  }
+  this.oic = oic || color(random(50, 255), random(50, 255), random(50, 255), 100);
 
   this.mitosis = function() {
     //this.pos.x += random(-this.r, this.r);
-    var cell = new Cell(this.pos, this.r*0.75, this.c, this.ic);
+    var cell = new Cell(this.pos, this.r*0.75, this.c, this.ic, this.oic);
     return cell;
   }
 
@@ -36,8 +28,8 @@ function Cell(pos, r, c, ic) {
     ellipse(this.pos.x, this.pos.y, this.r, this.r)
 	
 	fill(this.ic);
-	//strokeWeight(1);
-	//stroke(random(50, 255), random(50, 255), random(50, 255));
+	strokeWeight(1);
+	stroke(this.oic);
 	
 	ellipse(this.pos.x, this.pos.y, this.r/2, this.r/2)
   }
